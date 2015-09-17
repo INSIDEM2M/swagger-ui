@@ -84,6 +84,29 @@
 
       $('#input_apiKey').change(addApiKeyAuthorization);
 
+      $('#input_username').change(addAuthorization);
+      $('#input_password').change(addAuthorization);
+
+      $('#input_username').hide();
+      $('#input_password').hide();
+
+      $('#input_auth').change(function() {
+        $('#input_apiKey').toggle();
+
+        $('#input_username').toggle();
+        $('#input_password').toggle();
+      });
+
+      function addAuthorization() {
+        var username = $('#input_username').val();
+    	var password = $('#input_password').val();
+    	if (username && username.trim() != "" && password && password.trim() != "") {
+    	    var basicAuth = new SwaggerClient.PasswordAuthorization('basic', username, password);
+    	    window.swaggerUi.api.clientAuthorizations.add("basicAuth", basicAuth);
+    	    console.log("authorization added: username = " + username + ", password = " + password);
+    	}
+      } 
+
       // if you have an apiKey you would like to pre-populate on the page for demonstration purposes...
       /*
         var apiKey = "myApiKeyXXXX123456789";
@@ -106,7 +129,13 @@
   <div class="swagger-ui-wrap">
     <a id="logo" href="http://swagger.io">swagger</a>
     <form id='api_selector'>
+      <select class="parameter" id="input_auth">
+          <option selected value value="token">Token</option>
+          <option value="basic">Basic Auth</option>
+      </select>
       <div class='input'><input placeholder="http://example.com/api" id="input_baseUrl" name="baseUrl" type="text"/></div>
+      <div class="input"><input placeholder="username" id="input_username" name="username" type="text" size="10"></div>
+      <div class="input"><input placeholder="password" id="input_password" name="password" type="password" size="10"></div>
       <div class='input'><input placeholder="api_key" id="input_apiKey" name="apiKey" type="text"/></div>
       <div class='input'><a id="explore" href="#" data-sw-translate>Explore</a></div>
     </form>
