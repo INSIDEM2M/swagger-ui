@@ -82,7 +82,7 @@
 .swagger-section pre .vhdl .attribute,
 .swagger-section pre .clojure .attribute,
 .swagger-section pre .coffeescript .property {
-  color: #8888ff;
+  color: #88F;
 }
 .swagger-section pre .keyword,
 .swagger-section pre .id,
@@ -466,8 +466,8 @@
 .swagger-section .swagger-ui-wrap .editor_holder label {
   font-weight: normal!important;
   /* JSONEditor uses bold by default for all labels, we revert that back to normal to not give the impression that by default fields are required */
-.swagger-section .swagger-ui-wrap .editor_holder label.required {
 }
+.swagger-section .swagger-ui-wrap .editor_holder label.required {
   font-weight: bold!important;
 }
 .swagger-section .swagger-ui-wrap input.parameter {
@@ -1248,10 +1248,10 @@
   float: left;
   margin: 0 10px 0 0;
 }
-.swagger-section #api_selector input {
-  font-size: 0.9em;
-  padding: 3px;
+.swagger-section input#input_apiKey {
   width: 180px;
+  padding: 3px;
+  margin: 0;
 }
 .swagger-section #input_apiKey {
   width: 200px;
